@@ -3,6 +3,7 @@ import { Disclosure, } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useRef } from 'react'
 
 
 
@@ -15,13 +16,16 @@ export default function DashboardLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
+    const btnref = useRef<HTMLButtonElement>(null)
+    
     const pathname = usePathname()
     const navigation = [
         { name: 'NewListing', href: '/dashboard/listings', current: pathname === '/dashboard/listings' },
         { name: 'HDB Rental Transaction', href: '/dashboard/hbd-market-rental-rates', current: pathname === '/dashboard/hbd-market-rental-rates' },
         { name: 'Condo Rentals Transaction', href: '/dashboard/condo-rental-rates', current: pathname === '/dashboard/condo-rental-rates' },
-        { name: 'URA Developer Sales Data', href: '/dashboard/ura-dev-sales', current: pathname === '/dashboard/ura-dev-sales'},
-        { name: 'Balance Units', href: '/dashboard/balance-units', current: pathname === '/dashboard/balance-units'},
+        { name: 'URA Developer Sales Data', href: '/dashboard/ura-dev-sales', current: pathname === '/dashboard/ura-dev-sales' },
+        { name: 'Balance Units', href: '/dashboard/balance-units', current: pathname === '/dashboard/balance-units' },
 
     ]
     return (
@@ -32,7 +36,7 @@ export default function DashboardLayout({
                         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
                             <div className="relative flex h-16 items-center justify-between">
                                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                                    <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                                    <Disclosure.Button ref={btnref} className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                                         <span className="absolute -inset-0.5" />
                                         <span className="sr-only">Open main menu</span>
                                         {open ? (
@@ -47,17 +51,22 @@ export default function DashboardLayout({
                                     <div className="hidden sm:ml-6 sm:block">
                                         <div className="flex space-x-4">
                                             {navigation.map((item) => (
-                                                <a
+                                                <button
                                                     key={item.name}
-                                                    href={item.href}
+                                                    onClick={(e) => {
+                                                        e.preventDefault()
+                                                        console.log("Hello")
+                                                        btnref.current?.click()
+                                                        window.location.href = item.href
+                                                    }}
                                                     className={classNames(
                                                         item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                        'rounded-md px-3 py-2 text-sm font-medium'
+                                                        'rounded-md px-3 py-2 text-sm font-medium w-full text-left'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
                                                     {item.name}
-                                                </a>
+                                                </button>
                                             ))}
                                         </div>
                                     </div>
@@ -68,17 +77,24 @@ export default function DashboardLayout({
 
                         <Disclosure.Panel className="sm:hidden">
                             <div className="space-y-1 px-2 pb-3 pt-2">
-                            {navigation.map((item) => (
-                                    <Link key={item.name} href={item.href}>
-                                        <a
-                                            className={classNames(
-                                                pathname === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                'block rounded-md px-3 py-2 text-base font-medium'
-                                            )}
-                                        >
-                                            {item.name}
-                                        </a>
-                                    </Link>
+                                {navigation.map((item) => (
+                                    <button 
+                                    key={item.name}
+                                    className={classNames(
+                                        pathname === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        'block rounded-md px-3 py-2 text-base font-medium w-full text-left'
+                                    )}
+                                    onClick={(e) => {
+                                        e.preventDefault()
+                                        console.log("Hello")
+                                        btnref.current?.click()
+                                        window.location.href = item.href
+                                    }}
+
+                                    >
+
+                                        {item.name}
+                                    </button>
                                 ))}
                             </div>
                         </Disclosure.Panel>
