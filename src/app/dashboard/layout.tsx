@@ -26,6 +26,7 @@ export default function DashboardLayout({
         { name: 'Condo Rentals Transaction', href: '/dashboard/condo-rental-rates', current: pathname === '/dashboard/condo-rental-rates' },
         { name: 'URA Developer Sales Data', href: '/dashboard/ura-dev-sales', current: pathname === '/dashboard/ura-dev-sales' },
         { name: 'Balance Units', href: '/dashboard/balance-units', current: pathname === '/dashboard/balance-units' },
+        { name: 'Condo & EC Transactions', href: '/dashboard/condo-ec-transactions', current: pathname === '/dashboard/condo-ec-transactions' },
 
     ]
     return (
