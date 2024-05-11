@@ -142,9 +142,9 @@ export default function FormComponent() {
         })
 
         setLoading(false);
-        if(selected == "condo"){
+        if (selected == "condo") {
             router.push("https://condo-rent-dashboard.vercel.app/");
-        }else if(selected == "hdb"){
+        } else if (selected == "hdb") {
             router.push("https://hdb-rental-portal.vercel.app/");
         }
     }
