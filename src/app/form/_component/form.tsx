@@ -6,6 +6,9 @@ import Landed from "./landed";
 import Hdb from "./hdb";
 import Sidebar from "./sidebar/Main";
 import { useRouter } from "next/navigation";
+import { BsBuildings } from "react-icons/bs";
+import { FaMapMarkedAlt } from "react-icons/fa";
+import { FaRegBuilding } from "react-icons/fa6";
 export default function FormComponent() {
   const [selected, setSelected] = useState<string>("condo");
   const [loading, setLoading] = useState(false);
@@ -128,14 +131,58 @@ export default function FormComponent() {
       <Sidebar setSelected={setSelected} selected={selected} />
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="border rounded-r-[40px] shadow-lg w-3/4 overflow-auto p-5"
+        className="border rounded-lg lg:rounded-l-none md:rounded-l-none md:rounded-r-[40px] lg:rounded-r-[40px] shadow-lg lg:w-3/4 md:3/4 w-full overflow-auto p-5"
       >
+        <div className="flex gap-3 w-fit mx-auto flex-wrap justify-center lg:hidden md:hidden">
+          <div
+            onClick={(e) => formTypeHandler(e)}
+            data-id="condo"
+            className={`cursor-pointer h-11 px-3 flex justify-center items-center w-48 rounded-full ${
+              selected === "condo"
+                ? "bg-[#0e4884] text-white"
+                : "hover:bg-[#0e4884] hover:text-white border border-[#0e4884] text-[#0e4884]"
+            }`}
+          >
+            <span data-id="condo" className="font-bold">
+              Condo
+            </span>
+            <BsBuildings size={25} className="ms-2" />
+          </div>
+          <div
+            onClick={(e) => formTypeHandler(e)}
+            data-id="landed"
+            className={`cursor-pointer h-11 px-3 flex justify-center items-center w-48 rounded-full ${
+              selected === "landed"
+                ? "bg-[#0e4884] text-white"
+                : "hover:bg-[#0e4884] hover:text-white border border-[#0e4884] text-[#0e4884]"
+            }`}
+          >
+            <span data-id="landed" className="font-bold">
+              Landed
+            </span>
+            <FaMapMarkedAlt size={25} className="ms-2" />
+          </div>
+          <div
+            onClick={(e) => formTypeHandler(e)}
+            data-id="hdb"
+            className={`cursor-pointer h-11 px-3 flex justify-center items-center w-48 rounded-full ${
+              selected === "hdb"
+                ? "bg-[#0e4884] text-white"
+                : "hover:bg-[#0e4884] hover:text-white border border-[#0e4884] text-[#0e4884]"
+            }`}
+          >
+            <span data-id="hdb" className="font-bold">
+              HDB
+            </span>
+            <FaRegBuilding size={25} className="ms-2" />
+          </div>
+        </div>
         {renderFormFields()}
         <div className="mt-5">
           <p className="mb-3">Name</p>
           <input
             name="name"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#303dd7]"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
             type="text"
             placeholder="Enter First Name.."
           />
@@ -145,7 +192,7 @@ export default function FormComponent() {
           <p className="mb-3">Email</p>
           <input
             name="email"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#303dd7]"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
             type="text"
             placeholder="Enter Email Address"
           />
@@ -155,7 +202,7 @@ export default function FormComponent() {
           <p className="mb-3">Phone</p>
           <input
             name="phone"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#303dd7]"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
             type="number"
             placeholder="+65"
           />

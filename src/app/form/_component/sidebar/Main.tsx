@@ -11,10 +11,8 @@ export default function Sidebar({
   setSelected: Function;
   selected: string | null;
 }) {
-  const mq = useRef(window.matchMedia("(max-width: 498px)"));
-
   return (
-    <div className="min-w-[300px] h-full">
+    <div className="min-w-[300px] h-full hidden md:block lg:block">
       <aside
         id="default-sidebar"
         className="w-full rounded-l-[40px] z-40 h-full"
@@ -33,8 +31,8 @@ export default function Sidebar({
 
           <div className="w-3/4 mx-auto bg-[#022446] py-2 rounded-md flex gap-2 flex-col">
             <div
-              className={`flex items-center cursor-pointer h-10 bg-white rounded-md w-[90%] mx-auto ${
-                selected === "condo" ? "bg-[#0e4884]" : ""
+              className={`flex items-center cursor-pointer h-10 rounded-md w-[90%] mx-auto ${
+                selected === "condo" ? "bg-[#0e4884]" : "bg-white"
               }`}
               onClick={() => setSelected("condo")}
             >
@@ -48,25 +46,10 @@ export default function Sidebar({
                 CONDO
               </h1>
             </div>
+
             <div
-              className={`flex items-center cursor-pointer h-10 bg-white rounded-md w-[90%] mx-auto ${
-                selected === "hdb" ? "bg-[#0e4884]" : ""
-              }`}
-              onClick={() => setSelected("hdb")}
-            >
-              <h1
-                className={`"text-md flex items-center  text-black cursor-pointer" ${
-                  selected === "hdb" ? "text-white" : ""
-                }`}
-                onClick={() => setSelected("condo")}
-              >
-                <FaTableCells className="mx-4" />
-                HDB
-              </h1>
-            </div>
-            <div
-              className={`flex items-center cursor-pointer h-10 bg-white rounded-md w-[90%] mx-auto ${
-                selected === "landed" ? "bg-[#0e4884]" : ""
+              className={`flex items-center cursor-pointer h-10  rounded-md w-[90%] mx-auto ${
+                selected === "landed" ? "bg-[#0e4884]" : "bg-white"
               }`}
               onClick={() => setSelected("landed")}
             >
@@ -78,6 +61,22 @@ export default function Sidebar({
               >
                 <FaTableCells className="mx-4" />
                 LANDED
+              </h1>
+            </div>
+            <div
+              className={`flex items-center cursor-pointer h-10 rounded-md w-[90%] mx-auto ${
+                selected === "hdb" ? "bg-[#0e4884]" : "bg-white "
+              }`}
+              onClick={() => setSelected("hdb")}
+            >
+              <h1
+                className={`"text-md flex items-center  text-black cursor-pointer" ${
+                  selected === "hdb" ? "text-white" : ""
+                }`}
+                onClick={() => setSelected("condo")}
+              >
+                <FaTableCells className="mx-4" />
+                HDB
               </h1>
             </div>
           </div>
