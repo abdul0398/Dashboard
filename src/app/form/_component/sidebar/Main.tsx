@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import React, { useRef } from "react";
+import { BsBuildings } from "react-icons/bs";
+import { FaMapMarkedAlt, FaRegBuilding } from "react-icons/fa";
 import { FaTableCells } from "react-icons/fa6";
 
 export default function Sidebar({
@@ -42,8 +44,8 @@ export default function Sidebar({
                 }`}
                 onClick={() => setSelected("condo")}
               >
-                <FaTableCells className="mx-4" />
-                CONDO
+                <BsBuildings size={25} className="ms-2" />
+                <p className="ms-2">CONDO</p>
               </h1>
             </div>
 
@@ -59,8 +61,8 @@ export default function Sidebar({
                 }`}
                 onClick={() => setSelected("landed")}
               >
-                <FaTableCells className="mx-4" />
-                LANDED
+                <FaMapMarkedAlt size={25} className="ms-2" />
+                <p className="ms-2">LANDED</p>
               </h1>
             </div>
             <div
@@ -70,13 +72,13 @@ export default function Sidebar({
               onClick={() => setSelected("hdb")}
             >
               <h1
-                className={`"text-md flex items-center  text-black cursor-pointer" ${
+                className={`"text-md flex items-center text-black cursor-pointer" ${
                   selected === "hdb" ? "text-white" : ""
                 }`}
                 onClick={() => setSelected("condo")}
               >
-                <FaTableCells className="mx-4" />
-                HDB
+                <FaRegBuilding size={25} className="ms-2" />
+                <p className="ms-2">HDB</p>
               </h1>
             </div>
           </div>

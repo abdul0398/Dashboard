@@ -133,7 +133,7 @@ export default function FormComponent() {
         onSubmit={(e) => handleSubmit(e)}
         className="border rounded-lg lg:rounded-l-none md:rounded-l-none md:rounded-r-[40px] lg:rounded-r-[40px] shadow-lg lg:w-3/4 md:3/4 w-full overflow-auto p-5"
       >
-        <div className="flex gap-3 w-fit mx-auto flex-wrap justify-center lg:hidden md:hidden">
+        <div className="flex gap-3 w-full mx-auto flex-wrap justify-center lg:hidden md:hidden">
           <div
             onClick={(e) => formTypeHandler(e)}
             data-id="condo"
@@ -178,43 +178,45 @@ export default function FormComponent() {
           </div>
         </div>
         {renderFormFields()}
-        <div className="mt-5">
-          <p className="mb-3">Name</p>
+        <h2 className=" mx-auto max-w-[800px] text-2xl font-medium mt-10">
+          Send Us a Message
+        </h2>
+        <div className="mt-5 mx-auto max-w-[800px]">
           <input
             name="name"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
+            className="bg-gray-200 text-sm appearance-none border-2 h-12 shadow-md placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
             type="text"
-            placeholder="Enter First Name.."
+            placeholder="Full Name"
           />
         </div>
 
-        <div className="mt-5">
-          <p className="mb-3">Email</p>
-          <input
-            name="email"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
-            type="text"
-            placeholder="Enter Email Address"
-          />
-        </div>
+        <section className="flex gap-2 w-full  mx-auto max-w-[800px]">
+          <div className="mt-5 w-1/2">
+            <input
+              name="email"
+              className="bg-gray-200 text-sm appearance-none h-12 shadow-md border-2 placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
+              type="text"
+              placeholder="Email"
+            />
+          </div>
 
-        <div className="mt-5">
-          <p className="mb-3">Phone</p>
-          <input
-            name="phone"
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
-            type="number"
-            placeholder="+65"
-          />
-        </div>
+          <div className="mt-5 w-1/2">
+            <input
+              name="phone"
+              className="bg-gray-200 text-sm appearance-none border-2 h-12 shadow-md placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
+              type="number"
+              placeholder="Phone Number"
+            />
+          </div>
+        </section>
 
         <p className="text-red-500 text-center" id="error-para"></p>
-        <div className="mt-5 flex justify-center">
+        <div className="mt-5 flex justify-center  mx-auto max-w-[800px]">
           <button
             className={`${
               loading
                 ? "pointer-events-none flex justify-center py-1"
-                : "border border-[#0e4884] shadow-sm min-w-32 font-bold rounded-full bg-[#0e4884] text-white px-3 py-2"
+                : "border border-[#0e4884] shadow-sm min-w-32 w-full font-bold rounded-md bg-[#0e4884] text-white px-3 py-2"
             }  `}
           >
             {loading ? (
@@ -235,10 +237,18 @@ export default function FormComponent() {
                 />
               </svg>
             ) : (
-              "Submit"
+              "Send"
             )}
           </button>
         </div>
+        <section className="p-7 relative bg-black bg-[url('/building-form.jpg')] bg-cover bg-center before:bg-blue-400 bg-no-repeat max-w-[800px] mx-auto h-52 border rounded-3xl mt-10">
+          <h2 className="text-4xl text-white z-20 opacity-100">
+            Discover your dream condo rental and make it your home
+          </h2>
+          <div className="h-7 w-28 flex justify-center items-center mt-5 rounded-md text-sm shadow-lg">
+            Get Started
+          </div>
+        </section>
       </form>
     </div>
   );

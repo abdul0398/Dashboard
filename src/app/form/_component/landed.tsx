@@ -1,4 +1,5 @@
 "use client";
+import { customStyles } from "@/style/form.style";
 import Select from "react-select";
 
 export default function Landed() {
@@ -44,48 +45,40 @@ export default function Landed() {
   ];
 
   return (
-    <div>
+    <div className="w-full max-w-[800px] mx-auto mt-5 grid md:grid-cols-2 lg:grid-cols-2 gap-5 gap-y-5 mb-5">
       <div className="mt-5">
-        <p className="mb-2">1. Please select the street</p>
         <Select
           name="streets"
-          placeholder={"Select street"}
+          styles={customStyles}
+          placeholder={"Please select the street"}
           options={projectOption}
         />
       </div>
 
       <div className="mt-5">
-        <p className="mb-2">2. Your sqft</p>
         <input
           name="sqft"
-          className="bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#303dd7]"
+          className="bg-gray-200 text-sm appearance-none border-2 placeholder:text-black border-gray-200 rounded-md h-12 shadow-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
           type="text"
-          placeholder="Sqft"
+          placeholder="Your sqft"
         />
       </div>
       <div className="mt-5">
-        <p className="mb-2">3. I would Like to Know?</p>
         <Select
+          styles={customStyles}
           name="request"
-          placeholder={"Select Option"}
+          placeholder={"I would Like to Know?"}
           options={reqOptions}
         />
       </div>
 
       <div className="mt-5">
-        <p className="mb-2">4. What are your plans?</p>
         <Select
           name="plans"
-          placeholder={"Select Option"}
+          styles={customStyles}
+          placeholder={"What are your plans?"}
           options={planOptions}
         />
-      </div>
-
-      <div className="mt-5">
-        <p className="mb-2">
-          Please fill up your details and you will be able to retrieve an
-          automated LIVE report extracted base on URA data points.
-        </p>
       </div>
     </div>
   );
