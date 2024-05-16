@@ -46,7 +46,7 @@ export default function Landed() {
 
   return (
     <div className="w-full max-w-[800px] mx-auto mt-5 grid md:grid-cols-2 lg:grid-cols-2 gap-5 gap-y-5 mb-5">
-      <div className="mt-5">
+      <div className="">
         <Select
           name="streets"
           styles={customStyles}
@@ -55,7 +55,7 @@ export default function Landed() {
         />
       </div>
 
-      <div className="mt-5">
+      <div className="">
         <input
           name="sqft"
           className="bg-gray-200 text-sm appearance-none border-2 placeholder:text-black border-gray-200 rounded-md h-12 shadow-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
@@ -63,7 +63,7 @@ export default function Landed() {
           placeholder="Your sqft"
         />
       </div>
-      <div className="mt-5">
+      <div className="">
         <Select
           styles={customStyles}
           name="request"
@@ -72,7 +72,7 @@ export default function Landed() {
         />
       </div>
 
-      <div className="mt-5">
+      <div className="">
         <Select
           name="plans"
           styles={customStyles}

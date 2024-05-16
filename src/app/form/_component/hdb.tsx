@@ -74,7 +74,7 @@ export default function Hdb() {
   };
   return (
     <div className="w-full max-w-[800px] mx-auto mt-5 grid md:grid-cols-2 lg:grid-cols-2 gap-5 gap-y-5 mb-5">
-      <div className="mt-5">
+      <div className="">
         <Select
           name="located"
           styles={customStyles}
@@ -83,7 +83,7 @@ export default function Hdb() {
           onChange={(e) => handleTownChange(e)}
         />
       </div>
-      <div className="mt-5">
+      <div className="">
         <Select
           styles={customStyles}
           name="streetName"
@@ -91,7 +91,7 @@ export default function Hdb() {
           options={dataObj.streets}
         />
       </div>
-      <div className="mt-5">
+      <div className="">
         <Select
           styles={customStyles}
           name="blk"
@@ -99,7 +99,7 @@ export default function Hdb() {
           options={dataObj.blocks}
         />
       </div>
-      <div className="mt-5">
+      <div className="">
         <Select
           styles={customStyles}
           name="flatType"
@@ -107,7 +107,7 @@ export default function Hdb() {
           options={flattype}
         />
       </div>
-      <div className="mt-5">
+      <div className="">
         <Select
           styles={customStyles}
           name="sellDuration"
@@ -116,7 +116,7 @@ export default function Hdb() {
         />
       </div>
 
-      <div className="mt-5">
+      <div className="">
         <input
           name="units"
           className="bg-gray-200 text-sm appearance-none border-2 placeholder:text-black border-gray-200 rounded-md h-12 shadow-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"

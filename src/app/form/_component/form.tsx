@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { BsBuildings } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { FaRegBuilding } from "react-icons/fa6";
+import toast, { Toaster } from "react-hot-toast";
 export default function FormComponent() {
   const [selected, setSelected] = useState<string>("condo");
   const [loading, setLoading] = useState(false);
@@ -35,30 +36,36 @@ export default function FormComponent() {
     }
   };
 
+  const setError = (message: string) => {
+    toast.error(message, {
+      duration: 3000,
+    });
+  };
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const errorPara = document.getElementById("error-para") as HTMLElement;
-    errorPara.innerHTML = "";
+
     // Doing validation here
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
 
     if (!name || !email || !phone) {
-      errorPara.innerHTML = "Please Complete the Form";
+      setError("Please Complete the Form");
       return;
     }
 
     // email regex
     const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/;
     if (!emailRegex.test(email)) {
-      errorPara.innerHTML = "Invalid Email";
+      setError("Invalid Email");
       return;
     }
 
     if (phone.length != 8) {
-      errorPara.innerHTML = "Invalid Phone Number";
+      setError("Invalid Phone Number");
       return;
     }
 
@@ -69,7 +76,7 @@ export default function FormComponent() {
       const units = formData.get("units") as string;
 
       if (!projectName || !blk || !sellDuration || !units) {
-        errorPara.innerHTML = "Please Complete the Form";
+        setError("Please Complete the Form");
         return;
       }
     } else if (selected == "hdb") {
@@ -88,7 +95,7 @@ export default function FormComponent() {
         !sellDuration ||
         !units
       ) {
-        errorPara.innerHTML = "Please Complete the Form";
+        setError("Please Complete the Form");
         return;
       }
     } else {
@@ -98,7 +105,7 @@ export default function FormComponent() {
       const plans = formData.get("plans") as string;
 
       if (!streets || !sqft || !request || !plans) {
-        errorPara.innerHTML = "Please complete the Form";
+        setError("Please complete the Form");
         return;
       }
     }
@@ -210,7 +217,7 @@ export default function FormComponent() {
           </div>
         </section>
 
-        <p className="text-red-500 text-center" id="error-para"></p>
+        <Toaster />
         <div className="mt-5 flex justify-center  mx-auto max-w-[800px]">
           <button
             className={`${
@@ -241,11 +248,13 @@ export default function FormComponent() {
             )}
           </button>
         </div>
-        <section className="p-7 relative bg-black bg-[url('/building-form.jpg')] bg-cover bg-center before:bg-blue-400 bg-no-repeat max-w-[800px] mx-auto h-52 border rounded-3xl mt-10">
-          <h2 className="text-4xl text-white z-20 opacity-100">
-            Discover your dream condo rental and make it your home
-          </h2>
-          <div className="h-7 w-28 flex justify-center items-center mt-5 rounded-md text-sm shadow-lg">
+        <section className="p-7 relative  bg-[url('/building-banner.jpeg')]  bg-cover bg-center before:bg-blue-400 bg-no-repeat max-w-[800px] mx-auto h-52 border rounded-3xl mt-10">
+          <div className="lg:w-2/3 md:2/3 w-full">
+            <h2 className="lg:text-3xl md:text-2xl text-xl text-white z-20 opacity-100">
+              Discover your dream condo rental and make it your home
+            </h2>
+          </div>
+          <div className="text-[#0e4884] font-bold cursor-pointer h-9 w-28 flex justify-center bg-white items-center mt-5 rounded-md text-sm shadow-lg">
             Get Started
           </div>
         </section>
