@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 const FormComponent = dynamic(() => import("./_component/form"), {
   ssr: false,
 });
+
 export default function Form() {
   return (
     <div className="flex h-full w-full justify-center items-center">

@@ -1,17 +1,19 @@
 "use client";
 
-import { FormEvent, MouseEvent, useRef, useState } from "react";
+import { FormEvent, MouseEvent, useState } from "react";
 import Condo from "./condo";
 import Landed from "./landed";
 import Hdb from "./hdb";
 import Sidebar from "./sidebar/Main";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { BsBuildings } from "react-icons/bs";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { FaRegBuilding } from "react-icons/fa6";
 import toast, { Toaster } from "react-hot-toast";
 export default function FormComponent() {
-  const [selected, setSelected] = useState<string>("condo");
+  const searchParams = useSearchParams();
+  const formType = searchParams.get("type");
+  const [selected, setSelected] = useState<string>(formType || "condo");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -31,8 +33,6 @@ export default function FormComponent() {
         return <Landed />;
       case "hdb":
         return <Hdb />;
-      default:
-        return null;
     }
   };
 
@@ -45,7 +45,6 @@ export default function FormComponent() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
-    const errorPara = document.getElementById("error-para") as HTMLElement;
 
     // Doing validation here
     const name = formData.get("name") as string;
@@ -127,9 +126,21 @@ export default function FormComponent() {
 
     setLoading(false);
     if (selected == "condo") {
-      router.push("https://condo-rent-dashboard.vercel.app/");
+      router.push(
+        `https://condo-rent-dashboard.vercel.app/?project=${formData.get(
+          "projectName"
+        )}$block=${formData.get("blk") as string}`
+      );
     } else if (selected == "hdb") {
-      router.push("https://hdb-rental-portal.vercel.app/");
+      router.push(
+        `https://hdb-rental-portal.vercel.app/?street=${
+          formData.get("streetName") as string
+        }&block=${formData.get("blk") as string}&flatType=${
+          formData.get("flatType") as string
+        }`
+      );
+    } else {
+      router.push(`https://hdb-rental-portal.vercel.app/`);
     }
   };
 

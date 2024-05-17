@@ -1,10 +1,8 @@
 "use client";
-
 import Image from "next/image";
-import React, { useRef } from "react";
+import React from "react";
 import { BsBuildings } from "react-icons/bs";
 import { FaMapMarkedAlt, FaRegBuilding } from "react-icons/fa";
-import { FaTableCells } from "react-icons/fa6";
 
 export default function Sidebar({
   setSelected,

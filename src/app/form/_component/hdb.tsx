@@ -1,18 +1,24 @@
 "use client";
 import Select from "react-select";
-import { town_StreetRelation, town_blockRelation } from "@/data/constants";
+import {
+  street_blockRelation,
+  town_StreetRelation,
+  town_blockRelation,
+} from "@/data/constants";
 import { useState } from "react";
 import { data } from "@/types/data";
 import { customStyles } from "@/style/form.style";
 
 export default function Hdb() {
   const [dataObj, setData] = useState({
-    towns: Object.keys(town_StreetRelation).map((item) => {
-      return {
-        value: item,
-        label: item,
-      };
-    }),
+    towns: Object.keys(town_StreetRelation)
+      .sort()
+      .map((item) => {
+        return {
+          value: item,
+          label: item,
+        };
+      }),
     streets: [] as data[],
     blocks: [] as data[],
   });
@@ -37,20 +43,28 @@ export default function Hdb() {
   ];
   const flattype = [
     {
-      value: "2 - Room",
-      label: "2 - Room",
+      value: "1-ROOM",
+      label: "1-ROOM",
     },
     {
-      value: "3 - Room",
-      label: "3 - Room",
+      value: "2-ROOM",
+      label: "2-ROOM",
     },
     {
-      value: "4 - Room",
-      label: "4 - Room",
+      value: "3-ROOM",
+      label: "3-ROOM",
     },
     {
-      value: "Executive/Multi-Generation",
-      label: "Executive/Multi-Generation",
+      value: "4-ROOM",
+      label: "4-ROOM",
+    },
+    {
+      value: "5-ROOM",
+      label: "5-ROOM",
+    },
+    {
+      value: "EXECUTIVE",
+      label: "EXECUTIVE",
     },
   ];
 
@@ -65,13 +79,25 @@ export default function Hdb() {
           value: item,
           label: item,
         })),
-        blocks: blocks.map((item) => ({
+        blocks: [],
+      };
+    });
+  };
+
+  const handleStreetChange = (obj: any) => {
+    const blocks = street_blockRelation[obj.value];
+    setData((prev) => {
+      return {
+        towns: prev.towns,
+        streets: prev.streets,
+        blocks: blocks.sort().map((item) => ({
           value: item,
           label: item,
         })),
       };
     });
   };
+
   return (
     <div className="w-full max-w-[800px] mx-auto mt-5 grid md:grid-cols-2 lg:grid-cols-2 gap-5 gap-y-5 mb-5">
       <div className="">
@@ -89,6 +115,7 @@ export default function Hdb() {
           name="streetName"
           placeholder={"What is your Street Name?"}
           options={dataObj.streets}
+          onChange={(e) => handleStreetChange(e)}
         />
       </div>
       <div className="">

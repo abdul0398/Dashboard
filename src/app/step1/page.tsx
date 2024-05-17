@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function StepOnePage() {
   return (
     <div className="flex flex-col justify-center items-center lg:pt-9 md:pt-9 pt-3">
@@ -70,7 +68,8 @@ export default function StepOnePage() {
                       Condo
                     </h3>
                     <a
-                      href="#"
+                      href="/form?type=condo"
+                      target="_blank"
                       className="bg-[#FE692A] px-5 py-2 rounded-2xl text-white text-sm font-medium font-sans"
                     >
                       Get your Condo Valuation
@@ -85,10 +84,11 @@ export default function StepOnePage() {
                       Landed
                     </h3>
                     <a
-                      href="#"
+                      href="/form?type=landed"
+                      target="_blank"
                       className="bg-[#FE692A] px-5 py-2 rounded-2xl text-white text-sm font-medium font-sans"
                     >
-                      Get your Condo Valuation
+                      Get your Landed Valuation
                     </a>
                   </div>
                 </div>
@@ -100,10 +100,11 @@ export default function StepOnePage() {
                       HDB
                     </h3>
                     <a
-                      href="#"
+                      href="/form?type=hdb"
+                      target="_blank"
                       className="bg-[#FE692A] px-5 py-2 rounded-2xl text-white text-sm font-medium font-sans"
                     >
-                      Get your Condo Valuation
+                      Get your HDB Valuation
                     </a>
                   </div>
                 </div>
