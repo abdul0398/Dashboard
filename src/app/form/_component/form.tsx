@@ -208,8 +208,8 @@ export default function FormComponent() {
           />
         </div>
 
-        <section className="flex gap-2 w-full  mx-auto max-w-[800px]">
-          <div className="mt-5 w-1/2">
+        <section className="lg:flex md:flex gap-2 w-full  mx-auto max-w-[800px]">
+          <div className="mt-5 lg:w-1/2 md:w-1/2 w-full">
             <input
               name="email"
               className="bg-gray-200 text-sm appearance-none h-12 shadow-md border-2 placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
@@ -218,7 +218,7 @@ export default function FormComponent() {
             />
           </div>
 
-          <div className="mt-5 w-1/2">
+          <div className="mt-5 lg:w-1/2 md:w-1/2 w-full">
             <input
               name="phone"
               className="bg-gray-200 text-sm appearance-none border-2 h-12 shadow-md placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
