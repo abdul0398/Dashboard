@@ -14,6 +14,7 @@ export default function FormComponent() {
   const searchParams = useSearchParams();
   const formType = searchParams.get("type");
   const [selected, setSelected] = useState<string>(formType || "condo");
+  const [phone, setPhone] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -36,6 +37,21 @@ export default function FormComponent() {
     }
   };
 
+  const handleInputChange = (e: any) => {
+    const value = e.target.value;
+    const lastChar = value[value.length - 1];
+    if (lastChar === " ") {
+      return;
+    }
+    if (value.length > 8) {
+      return;
+    }
+    if (isNaN(Number(value))) {
+      return;
+    }
+    setPhone(value);
+  };
+
   const setError = (message: string) => {
     toast.error(message, {
       duration: 3000,
@@ -49,7 +65,6 @@ export default function FormComponent() {
     // Doing validation here
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
-    const phone = formData.get("phone") as string;
 
     if (!name || !email || !phone) {
       setError("Please Complete the Form");
@@ -129,7 +144,7 @@ export default function FormComponent() {
       router.push(
         `https://condo-rent-dashboard.vercel.app/?project=${formData.get(
           "projectName"
-        )}$block=${formData.get("blk") as string}`
+        )}`
       );
     } else if (selected == "hdb") {
       router.push(
@@ -221,8 +236,10 @@ export default function FormComponent() {
           <div className="mt-5 lg:w-1/2 md:w-1/2 w-full">
             <input
               name="phone"
+              onChange={handleInputChange}
               className="bg-gray-200 text-sm appearance-none border-2 h-12 shadow-md placeholder:text-black border-gray-200 rounded-md w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-[#0e4884]"
-              type="number"
+              type="text"
+              value={phone}
               placeholder="Phone Number"
             />
           </div>
