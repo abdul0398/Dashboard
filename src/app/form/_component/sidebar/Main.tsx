@@ -43,7 +43,7 @@ export default function Sidebar({
                 onClick={() => setSelected("condo")}
               >
                 <BsBuildings size={25} className="ms-2" />
-                <p className="ms-2">CONDO</p>
+                <p className="ms-2 font-medium text-sm">CONDO</p>
               </h1>
             </div>
 
@@ -60,7 +60,7 @@ export default function Sidebar({
                 onClick={() => setSelected("landed")}
               >
                 <FaMapMarkedAlt size={25} className="ms-2" />
-                <p className="ms-2">LANDED</p>
+                <p className="ms-2 font-medium text-sm">LANDED</p>
               </h1>
             </div>
             <div
@@ -76,7 +76,7 @@ export default function Sidebar({
                 onClick={() => setSelected("condo")}
               >
                 <FaRegBuilding size={25} className="ms-2" />
-                <p className="ms-2">HDB</p>
+                <p className="ms-2 font-medium text-sm">HDB</p>
               </h1>
             </div>
           </div>
