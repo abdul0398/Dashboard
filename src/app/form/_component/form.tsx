@@ -164,7 +164,7 @@ export default function FormComponent() {
       <Sidebar setSelected={setSelected} selected={selected} />
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="border rounded-lg lg:rounded-l-none md:rounded-l-none md:rounded-r-[40px] lg:rounded-r-[40px] shadow-lg lg:w-full md:full w-full overflow-auto p-5"
+        className="border rounded-lg lg:rounded-l-none md:rounded-l-none md:rounded-r-[40px] lg:rounded-r-[40px] shadow-lg lg:w-full md:full no-scrollbar scroll-smooth w-full overflow-y-scroll p-5"
       >
         <div className="flex gap-3 w-full mx-auto flex-wrap justify-center lg:hidden md:hidden">
           <div
