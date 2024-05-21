@@ -238,7 +238,7 @@ export default function StepOnePage() {
                     Landed
                   </h3>
                   <p>
-                    Lorem Ipsum has been the industry's standard ever since the
+                    Lorem Ipsum has been the industrys standard ever since the
                     1500s
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function StepOnePage() {
                     Landed
                   </h3>
                   <p>
-                    Lorem Ipsum has been the industry's standard ever since the
+                    Lorem Ipsum has been the industrys standard ever since the
                     1500s
                   </p>
                 </div>
@@ -264,7 +264,7 @@ export default function StepOnePage() {
                     Landed
                   </h3>
                   <p>
-                    Lorem Ipsum has been the industry's standard ever since the
+                    Lorem Ipsum has been the industrys standard ever since the
                     1500s
                   </p>
                 </div>
