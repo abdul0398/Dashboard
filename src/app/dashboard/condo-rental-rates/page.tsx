@@ -1,12 +1,13 @@
 "use client";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 export default function NewListing() {
   const params = useSearchParams();
   const project = params.get("project");
 
   return (
-    <>
+    <Suspense>
       {project ? (
         <iframe
           src={`https://condo-rent-dashboard.vercel.app/?project=${project}`}
@@ -18,6 +19,6 @@ export default function NewListing() {
           className="w-full h-full"
         />
       )}
-    </>
+    </Suspense>
   );
 }
