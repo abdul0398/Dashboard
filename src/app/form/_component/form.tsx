@@ -142,20 +142,18 @@ export default function FormComponent() {
     setLoading(false);
     if (selected == "condo") {
       router.push(
-        `https://condo-rent-dashboard.vercel.app/?project=${formData.get(
-          "projectName"
-        )}`
+        `/dashboard/condo-rental-rates?project=${formData.get("projectName")}`
       );
     } else if (selected == "hdb") {
       router.push(
-        `https://hdb-rental-portal.vercel.app/?street=${
+        `/dashboard/hdb-market-rental-rates?street=${
           formData.get("streetName") as string
         }&block=${formData.get("blk") as string}&flatType=${
           formData.get("flatType") as string
         }`
       );
     } else {
-      router.push(`https://hdb-rental-portal.vercel.app/`);
+      router.push(`/dashboard/hdb-market-rental-rates`);
     }
   };
 

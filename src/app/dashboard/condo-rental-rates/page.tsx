@@ -26,7 +26,7 @@ function NewListing() {
 export default function DashboardPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <NewListing />
+    <NewListing />
     </Suspense>
   );
 }
