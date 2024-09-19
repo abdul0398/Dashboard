@@ -5,18 +5,11 @@ import { Suspense, useEffect, useState } from "react";
 
 function NewListing() {
   const searchParams = useSearchParams();
-  const [url, setUrl] = useState<string | null>(null);
-
-  useEffect(() => {
     const street = searchParams.get("street");
     const block = searchParams.get("block");
 
-    if (street && block) {
-      setUrl(`https://condo-ec-transacttion.vercel.app/?street=${street}&block=${block}`);
-    }
-  }, [searchParams]);
+    let url = `https://condo-ec-transacttion.vercel.app/?street=${street}&block=${block}`;
 
-  if (!url) return null;
 
   return (
     <iframe src={url} className="w-full h-full"></iframe>
@@ -30,3 +23,4 @@ export default function DashboardPage() {
     </Suspense>
   );
 }
+
